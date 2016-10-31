@@ -1,37 +1,40 @@
+#include <sstream>
 #include "http.hpp"
 
 using namespace http;
 
-HTTP_Response::HTTP_Response(int status, const std::string &reason, std::string &body) {
-    this->status = status;
-    this->reason = reason;
-    this->body = std::move(body);
+HTTP_Response::HTTP_Response(int status, const std::string &reason, std::string &body) noexcept(true)
+    :
+    _status(status),
+    _reason(reason),
+    _body(std::move(body))
+{
 }
 
-int HTTP_Response::get_status() const {
-    return this->status;
+int HTTP_Response::status() const {
+    return _status;
 }
 
-const std::string& HTTP_Response::get_reason() const {
-    return reason;
+const std::string& HTTP_Response::reason() const {
+    return _reason;
 }
 
-const std::string& HTTP_Response::get_body() const {
-    return body;
+const std::string& HTTP_Response::body() const {
+    return _body;
 }
 
 HTTP_Response::operator bool() const {
-    return status == 200 or status == 201;
+    return _status == 200 or _status == 201;
 }
 
 HTTP_Response::operator !() const {
-    return status != 200 or status != 201;
+    return _status != 200 and _status != 201;
 }
 
-std::ostream& HTTP_Response::operator<< (std::ostream& stream) {
-    stream << "HTTP Response(" << this->status
-           << ", " << this->reason << ")\n";
-    return stream;
+HTTP_Response::operator std::string() const {
+    std::ostringstream stream;
+    stream << "HTTP Response(" << this->status() << ", " << this->reason() << ")";
+    return stream.str();
 }
 
 HTTPS_Request::HTTPS_Request(const char* url) {

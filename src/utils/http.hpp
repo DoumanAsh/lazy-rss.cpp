@@ -32,33 +32,33 @@ class HTTP_Response {
          * @param reason Reason description.
          * @param body Content of response. Moved.
          */
-        HTTP_Response(int status, const std::string &reason, std::string &body);
+        HTTP_Response(int status, const std::string &reason, std::string &body) noexcept(true);
 
         /**
          * @return Status code of response.
          */
-        int get_status() const;
+        int status() const;
 
         /**
          * @return Reason description of status code.
          */
-        const std::string& get_reason() const;
+        const std::string& reason() const;
 
         /**
          * @return Content of response.
          */
-        const std::string& get_body() const;
+        const std::string& body() const;
 
         operator bool() const;
 
         operator !() const;
 
-        std::ostream& operator<< (std::ostream& stream);
+        explicit operator std::string() const;
 
     private:
-        int status;
-        std::string reason;
-        std::string body;
+        int _status;
+        std::string _reason;
+        std::string _body;
 };
 
 /**

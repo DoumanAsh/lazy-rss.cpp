@@ -7,19 +7,20 @@ set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Os -Wall -Wextra -g")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Os")
 
-file(GLOB utils_SRC "src/utils/*.hpp" "src/utils/*.cpp")
+file(GLOB utils_SRC "src/utils/*.cpp")
 add_library(lazy_utils STATIC "${utils_SRC}")
 
-file(GLOB rss_SRC "src/*.hpp" "src/*.cpp")
+file(GLOB rss_SRC "src/*.cpp")
 add_executable(lazy_rss "${rss_SRC}")
 target_link_libraries(lazy_rss lazy_utils)
 
 #Set up Poco lib
-include_directories("${_Poco_install_prefix}/include")
 target_link_libraries(lazy_rss PocoFoundation PocoNet PocoNetSSL)
 
+###########################
+# Unit tests
+##########################
 option(test "Build tests" OFF)
-
 if (test)
     set(G_TEST_DIR ${CMAKE_BINARY_DIR}/lib/googletest)
 
@@ -30,22 +31,43 @@ if (test)
 
         PREFIX ${G_TEST_DIR}
         INSTALL_COMMAND ""
+        # Disable auto-update
+        UPDATE_DISCONNECTED 1
     )
     ExternalProject_Get_Property(googletest source_dir binary_dir)
 
-    add_executable(FirstTest test/test.cpp)
+    file(GLOB ut_SRC "test/*.cpp")
+    add_executable(ut "${ut_SRC}")
+
+    include_directories(src src/utils)
+    target_link_libraries(ut lazy_utils)
+    target_link_libraries(ut PocoFoundation PocoNet PocoNetSSL)
 
     # Add Google Test dependency.
     # Its repo contains sub-projects:
     # - googletest - Source code of gtest.
     # - googlemock - Source code of gmock
-    add_dependencies(FirstTest googletest)
+    add_dependencies(ut googletest)
     include_directories(${source_dir}/googlemock/include)
     include_directories(${source_dir}/googletest/include)
     # gmock contains gtest so it is enough
-    target_link_libraries(FirstTest ${binary_dir}/googlemock/libgmock.a)
+    target_link_libraries(ut ${binary_dir}/googlemock/libgmock.a)
+    target_link_libraries(ut ${binary_dir}/googlemock/libgmock_main.a)
 
     enable_testing()
     add_test(NAME    all
-             COMMAND FirstTest)
+             COMMAND ut)
 endif()
+
+###########################
+# cppcheck
+##########################
+GET_DIRECTORY_PROPERTY(project_includes INCLUDE_DIRECTORIES)
+
+add_custom_target(
+    cppcheck
+    COMMAND cppcheck
+    --enable=all
+    -I ${project_includes}
+    ${utils_SRC} ${rss_SRC}
+)
