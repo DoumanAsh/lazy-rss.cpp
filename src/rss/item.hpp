@@ -68,6 +68,11 @@ class Item {
          */
         void reset();
 
+        /**
+         * String representation of RSS Item.
+         *
+         * Can be used as debug information.
+         */
         explicit operator std::string() const;
 
     private:

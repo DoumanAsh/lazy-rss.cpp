@@ -49,10 +49,24 @@ class HTTP_Response {
          */
         const std::string& body() const;
 
+        /**
+         * @return Whether response is success or not.
+         *
+         * @retval true If response code is either 200 or 201
+         * @retval false Otherwise.
+         */
         operator bool() const;
 
+        /**
+         * @return Whether response is failure or not.
+         */
         operator !() const;
 
+        /**
+         * String representation of HTTP Response.
+         *
+         * Can be used as debug information.
+         */
         explicit operator std::string() const;
 
     private:
