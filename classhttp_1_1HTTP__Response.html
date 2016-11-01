@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 
 <p>Represents HTTP(s) response.  
-</p>
+ <a href="classhttp_1_1HTTP__Response.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="http_8hpp_source.html">http.hpp</a>&gt;</code></p>
 <table class="memberdecls">
@@ -116,9 +116,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae393bd5f84d542965367bb77492b94ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Response.html#ae393bd5f84d542965367bb77492b94ed">operator!</a> () const </td></tr>
 <tr class="separator:ae393bd5f84d542965367bb77492b94ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb100230f395b9f3aa5ba51b75f59419"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Response.html#adb100230f395b9f3aa5ba51b75f59419">operator std::string</a> () const </td></tr>
+<tr class="memdesc:adb100230f395b9f3aa5ba51b75f59419"><td class="mdescLeft">&#160;</td><td class="mdescRight">String representation of HTTP Response.  <a href="#adb100230f395b9f3aa5ba51b75f59419">More...</a><br /></td></tr>
 <tr class="separator:adb100230f395b9f3aa5ba51b75f59419"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents HTTP(s) response. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a84e976ba048cbc198895190efed335b5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -156,6 +159,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Creates HTTP Response. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td>Status code of Request. </td></tr>
@@ -196,6 +201,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether response is success or not.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>If response code is either 200 or 201 </td></tr>
+    <tr><td class="paramname">false</td><td>Otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -220,6 +233,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>String representation of HTTP Response. </p>
+<p>Can be used as debug information. </p>
+
 </div>
 </div>
 <a class="anchor" id="ae393bd5f84d542965367bb77492b94ed"></a>
@@ -234,6 +250,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether response is failure or not. </dd></dl>
 
 </div>
 </div>
