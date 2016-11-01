@@ -10,12 +10,18 @@ using namespace item;
 #include "Poco/SAX/ContentHandler.h"
 #include "Poco/SAX/SAXParser.h"
 
+/**
+ * ContentHandler of RSS parser.
+ *
+ * See POCO [documentation](https://pocoproject.org/docs/Poco.XML.ContentHandler.html) for description.
+ */
 class XML_DataHandler: public Poco::XML::ContentHandler {
 public:
     XML_DataHandler() {
         is_item = false;
     };
-    virtual ~XML_DataHandler() {};
+    virtual ~XML_DataHandler() {
+    };
 
     // ContentHandler overrides
     void setDocumentLocator(const Poco::XML::Locator* loc) {

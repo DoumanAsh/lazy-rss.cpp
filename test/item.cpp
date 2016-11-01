@@ -15,6 +15,7 @@ TEST(Item, CheckRssItemClassConstructor) {
 
     Item item(title, category, link, guid, desc);
 
+    EXPECT_TRUE(item);
     EXPECT_EQ(item.title(), title);
     EXPECT_EQ(item.category(), category);
     EXPECT_EQ(item.link(), link);
@@ -23,6 +24,7 @@ TEST(Item, CheckRssItemClassConstructor) {
 
     item.reset();
 
+    EXPECT_FALSE(item);
     EXPECT_TRUE(item.title().empty());
     EXPECT_TRUE(item.category().empty());
     EXPECT_TRUE(item.link().empty());
@@ -39,12 +41,15 @@ TEST(Item, CheckRssItemClassSetters) {
 
     Item item;
 
+    EXPECT_FALSE(item);
+
     item.set_title(title)
         .set_category(category)
         .set_link(link)
         .set_guid(guid)
         .set_desc(desc);
 
+    EXPECT_TRUE(item);
     EXPECT_EQ(item.title(), title);
     EXPECT_EQ(item.category(), category);
     EXPECT_EQ(item.link(), link);
@@ -53,6 +58,7 @@ TEST(Item, CheckRssItemClassSetters) {
 
     item.reset();
 
+    EXPECT_FALSE(item);
     EXPECT_TRUE(item.title().empty());
     EXPECT_TRUE(item.category().empty());
     EXPECT_TRUE(item.link().empty());

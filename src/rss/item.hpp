@@ -75,6 +75,19 @@ class Item {
          */
         explicit operator std::string() const;
 
+        /**
+         * @return Whether RSS item is valid.
+         *
+         * @retval true If title, link and description is filled.
+         * @retval false Otherwise.
+         */
+        operator bool() const;
+
+        /**
+         * @return Negative of bool.
+         */
+        operator !() const;
+
     private:
         std::string _title;
         std::string _category;
