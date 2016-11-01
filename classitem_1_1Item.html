@@ -136,6 +136,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a427f6793ae2be549485e357a2a93920e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitem_1_1Item.html#a427f6793ae2be549485e357a2a93920e">operator std::string</a> () const </td></tr>
 <tr class="memdesc:a427f6793ae2be549485e357a2a93920e"><td class="mdescLeft">&#160;</td><td class="mdescRight">String representation of RSS <a class="el" href="classitem_1_1Item.html">Item</a>.  <a href="#a427f6793ae2be549485e357a2a93920e">More...</a><br /></td></tr>
 <tr class="separator:a427f6793ae2be549485e357a2a93920e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88da5b2f95ef74b55d1f31b362932128"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitem_1_1Item.html#a88da5b2f95ef74b55d1f31b362932128">operator bool</a> () const </td></tr>
+<tr class="separator:a88da5b2f95ef74b55d1f31b362932128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9f753ea099a6a897092d1a6b86df14f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classitem_1_1Item.html#af9f753ea099a6a897092d1a6b86df14f">operator!</a> () const </td></tr>
+<tr class="separator:af9f753ea099a6a897092d1a6b86df14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a36a55acf111f86ae48b56c37e70ad858"></a>
@@ -282,6 +286,29 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a88da5b2f95ef74b55d1f31b362932128"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Item::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether RSS item is valid.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>If title, link and description is filled. </td></tr>
+    <tr><td class="paramname">false</td><td>Otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a427f6793ae2be549485e357a2a93920e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -305,6 +332,22 @@ Public Member Functions</h2></td></tr>
 
 <p>String representation of RSS <a class="el" href="classitem_1_1Item.html">Item</a>. </p>
 <p>Can be used as debug information. </p>
+
+</div>
+</div>
+<a class="anchor" id="af9f753ea099a6a897092d1a6b86df14f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Item::operator! </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Negative of bool. </dd></dl>
 
 </div>
 </div>
