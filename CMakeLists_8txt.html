@@ -90,26 +90,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aff240fb1cbdfdecd77777206e89450e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#aff240fb1cbdfdecd77777206e89450e6">project</a> (lazy_rss CXX) cmake_minimum_required(VERSION 2.6) find_package(Poco REQUIRED Foundation Net NetSsl) <a class="el" href="CMakeLists_8txt.html#aa11101c43f2b8fa2c60d270de1fd7bbf">set</a>(CMAKE_C_FLAGS&quot;$</td></tr>
-<tr class="separator:aff240fb1cbdfdecd77777206e89450e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe834838342ec8850c954c5df0412b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#adfe834838342ec8850c954c5df0412b8">project</a> (lazy_rss CXX) cmake_minimum_required(VERSION 3.0) find_package(Poco REQUIRED Foundation Net NetSsl) <a class="el" href="CMakeLists_8txt.html#aa11101c43f2b8fa2c60d270de1fd7bbf">set</a>(CMAKE_C_FLAGS&quot;$</td></tr>
+<tr class="separator:adfe834838342ec8850c954c5df0412b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa11101c43f2b8fa2c60d270de1fd7bbf"><td class="memItemLeft" align="right" valign="top">Os Wall Wextra g&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#aa11101c43f2b8fa2c60d270de1fd7bbf">set</a> (CMAKE_CXX_FLAGS&quot;${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}&quot;) set(CMAKE_EXE_LINKER_FLAGS&quot;$</td></tr>
 <tr class="separator:aa11101c43f2b8fa2c60d270de1fd7bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8578493e53653520b65fd18bfa1c9965"><td class="memItemLeft" align="right" valign="top">Os&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a8578493e53653520b65fd18bfa1c9965">file</a> (GLOB utils_SRC&quot;src/utils/*.hpp&quot;&quot;src/utils/*.cpp&quot;) add_library(lazy_utils STATIC&quot;$</td></tr>
-<tr class="separator:a8578493e53653520b65fd18bfa1c9965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeda7b2d16e75e05047a4fc9621739beb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#aeda7b2d16e75e05047a4fc9621739beb">file</a> (GLOB rss_SRC&quot;src/*.hpp&quot;&quot;src/*.cpp&quot;) add_executable(lazy_rss&quot;$</td></tr>
-<tr class="separator:aeda7b2d16e75e05047a4fc9621739beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a242f9031b684e87ceb8458a13e54323c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a242f9031b684e87ceb8458a13e54323c">target_link_libraries</a> (lazy_rss lazy_utils) include_directories(&quot;$</td></tr>
-<tr class="separator:a242f9031b684e87ceb8458a13e54323c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96acbb9ee6cb556f1e4955a8e731c71f"><td class="memItemLeft" align="right" valign="top">Os&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a96acbb9ee6cb556f1e4955a8e731c71f">file</a> (GLOB lazy_rss_SRC&quot;src/rss/*.cpp&quot;) add_library(lazy_rss STATIC&quot;$</td></tr>
+<tr class="separator:a96acbb9ee6cb556f1e4955a8e731c71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a68bc69cfc36e1009e13f2ae3cfb0c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a2a68bc69cfc36e1009e13f2ae3cfb0c0">file</a> (GLOB utils_SRC&quot;src/utils/*.cpp&quot;) add_library(lazy_utils STATIC&quot;$</td></tr>
+<tr class="separator:a2a68bc69cfc36e1009e13f2ae3cfb0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1f9db0a724e613d1028b57420df3790"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#af1f9db0a724e613d1028b57420df3790">file</a> (GLOB rss_SRC&quot;src/*.cpp&quot;) add_executable(get_rss&quot;$</td></tr>
+<tr class="separator:af1f9db0a724e613d1028b57420df3790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a60a8d54e493ca478fcbcf5635fd17b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a3a60a8d54e493ca478fcbcf5635fd17b">target_link_libraries</a> (get_rss lazy_utils lazy_rss) target_link_libraries(get_rss PocoFoundation PocoNet PocoNetSSL PocoXML) option(test&quot;Build tests&quot;OFF) if(test) <a class="el" href="CMakeLists_8txt.html#aa11101c43f2b8fa2c60d270de1fd7bbf">set</a>(G_TEST_DIR $</td></tr>
+<tr class="separator:a3a60a8d54e493ca478fcbcf5635fd17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645a47d2067a1adeb7bd17153416961c"><td class="memItemLeft" align="right" valign="top">lib googletest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a645a47d2067a1adeb7bd17153416961c">include</a> (ExternalProject) ExternalProject_Add(googletest GIT_REPOSITORY https</td></tr>
+<tr class="separator:a645a47d2067a1adeb7bd17153416961c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a8578493e53653520b65fd18bfa1c9965"></a>
+<a class="anchor" id="a96acbb9ee6cb556f1e4955a8e731c71f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Os file </td>
           <td>(</td>
-          <td class="paramtype">GLOB utils_SRC&quot;src/utils/*.hpp&quot;&quot;src/utils/*.cpp&quot;&#160;</td>
+          <td class="paramtype">GLOB lazy_rss_SRC&quot;src/rss/*.cpp&quot;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -118,14 +122,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aeda7b2d16e75e05047a4fc9621739beb"></a>
+<a class="anchor" id="a2a68bc69cfc36e1009e13f2ae3cfb0c0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">file </td>
           <td>(</td>
-          <td class="paramtype">GLOB rss_SRC&quot;src/*.hpp&quot;&quot;src/*.cpp&quot;&#160;</td>
+          <td class="paramtype">GLOB utils_SRC&quot;src/utils/*.cpp&quot;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -134,7 +138,39 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aff240fb1cbdfdecd77777206e89450e6"></a>
+<a class="anchor" id="af1f9db0a724e613d1028b57420df3790"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">file </td>
+          <td>(</td>
+          <td class="paramtype">GLOB rss_SRC&quot;src/*.cpp&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a645a47d2067a1adeb7bd17153416961c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">lib googletest include </td>
+          <td>(</td>
+          <td class="paramtype">ExternalProject&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adfe834838342ec8850c954c5df0412b8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -166,15 +202,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a242f9031b684e87ceb8458a13e54323c"></a>
+<a class="anchor" id="a3a60a8d54e493ca478fcbcf5635fd17b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">target_link_libraries </td>
           <td>(</td>
-          <td class="paramtype">lazy_rss&#160;</td>
-          <td class="paramname"><em>lazy_utils</em></td><td>)</td>
+          <td class="paramtype">get_rss lazy_utils&#160;</td>
+          <td class="paramname"><em>lazy_rss</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

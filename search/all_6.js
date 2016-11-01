@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['operator_20bool',['operator bool',['../classhttp_1_1HTTP__Response.html#ac240beb8f624df5e852ea9a90f2893ab',1,'http::HTTP_Response']]],
-  ['operator_21',['operator!',['../classhttp_1_1HTTP__Response.html#ae393bd5f84d542965367bb77492b94ed',1,'http::HTTP_Response']]],
-  ['operator_3c_3c',['operator&lt;&lt;',['../classhttp_1_1HTTP__Response.html#a55ca8bb48af2ab24b6b0c3a57f9b66a8',1,'http::HTTP_Response']]]
+  ['http',['http',['../namespacehttp.html',1,'']]],
+  ['http_2ecpp',['http.cpp',['../http_8cpp.html',1,'']]],
+  ['http_2ehpp',['http.hpp',['../http_8hpp.html',1,'']]],
+  ['http_5fresponse',['HTTP_Response',['../classhttp_1_1HTTP__Response.html#a84e976ba048cbc198895190efed335b5',1,'http::HTTP_Response']]],
+  ['http_5fresponse',['HTTP_Response',['../classhttp_1_1HTTP__Response.html',1,'http']]],
+  ['https_5frequest',['HTTPS_Request',['../classhttp_1_1HTTPS__Request.html',1,'http']]],
+  ['https_5frequest',['HTTPS_Request',['../classhttp_1_1HTTPS__Request.html#a9cc79cc3fac1e8bf546c52c64ef05c22',1,'http::HTTPS_Request']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['file',['file',['../CMakeLists_8txt.html#a8578493e53653520b65fd18bfa1c9965',1,'file(GLOB utils_SRC&quot;src/utils/*.hpp&quot;&quot;src/utils/*.cpp&quot;) add_library(lazy_utils STATIC&quot;$:&#160;CMakeLists.txt'],['../CMakeLists_8txt.html#aeda7b2d16e75e05047a4fc9621739beb',1,'file(GLOB rss_SRC&quot;src/*.hpp&quot;&quot;src/*.cpp&quot;) add_executable(lazy_rss&quot;$:&#160;CMakeLists.txt']]]
+  ['category',['category',['../classitem_1_1Item.html#a23da8c751f6990c0756e2d2f8837ee62',1,'item::Item']]],
+  ['characters',['characters',['../classXML__DataHandler.html#af91c951b13cd2146706bc573990d4bc9',1,'XML_DataHandler']]],
+  ['cmakelists_2etxt',['CMakeLists.txt',['../CMakeLists_8txt.html',1,'']]]
 ];

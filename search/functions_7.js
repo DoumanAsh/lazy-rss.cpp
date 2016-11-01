@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['set',['set',['../CMakeLists_8txt.html#aa11101c43f2b8fa2c60d270de1fd7bbf',1,'CMakeLists.txt']]],
-  ['set_5fmethod',['set_method',['../classhttp_1_1HTTPS__Request.html#a36efcf59fe44f841800cb121bb20167e',1,'http::HTTPS_Request']]],
-  ['set_5frelaxed_5fssl',['set_relaxed_ssl',['../classhttp_1_1HTTPS__Request.html#abb9e0fc75938f0689e36724015469b9b',1,'http::HTTPS_Request']]],
-  ['set_5fstrict_5fssl',['set_strict_ssl',['../classhttp_1_1HTTPS__Request.html#ab7e31f2c699b33078181938e9d8f789a',1,'http::HTTPS_Request']]]
+  ['ignorablewhitespace',['ignorableWhitespace',['../classXML__DataHandler.html#af8ed213c59874ac85fab6e93a7fca08f',1,'XML_DataHandler']]],
+  ['include',['include',['../CMakeLists_8txt.html#a645a47d2067a1adeb7bd17153416961c',1,'CMakeLists.txt']]],
+  ['item',['Item',['../classitem_1_1Item.html#a36a55acf111f86ae48b56c37e70ad858',1,'item::Item::Item() noexcept(true)'],['../classitem_1_1Item.html#a07377b35b3fa28453b0ec976285fccfc',1,'item::Item::Item(const std::string &amp;title, const std::string &amp;category, const std::string &amp;link, const std::string &amp;guid, const std::string &amp;desc) noexcept(true)']]]
 ];

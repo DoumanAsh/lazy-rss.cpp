@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../rss_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'rss.cpp']]]
+  ['guid',['guid',['../classitem_1_1Item.html#a5d0c67598354a149475f1979414feffe',1,'item::Item']]]
 ];
