@@ -18,7 +18,8 @@ using namespace parser;
  */
 class XML_DataHandler: public Poco::XML::ContentHandler {
 public:
-    XML_DataHandler() {
+    explicit XML_DataHandler(const parser_cb &callback) {
+        _callback = callback;
         is_item = false;
     };
     virtual ~XML_DataHandler() {
@@ -45,6 +46,7 @@ public:
             cur_item.reset();
         }
     }
+
     void endElement(const Poco::XML::XMLString & uri, const Poco::XML::XMLString & localName, const Poco::XML::XMLString & qname) {
         (void)uri;
         (void)localName;
@@ -63,7 +65,7 @@ public:
         else if (qname == "item") {
             //Finished with element parsing.
             is_item = false;
-            callback(cur_item);
+            _callback(cur_item);
         }
 
         cur_content.clear();
@@ -94,15 +96,11 @@ public:
         (void)name;
     }
 
-    void set_callback(const parser_cb &cb) {
-        callback = cb;
-    }
-
 private:
     bool is_item;
     std::string cur_content;
     Item cur_item;
-    parser_cb callback;
+    parser_cb _callback;
 };
 
 Parser::Parser(parser_cb &cb) noexcept(true)
@@ -113,12 +111,11 @@ Parser::Parser(parser_cb &cb) noexcept(true)
 }
 
 void Parser::parse(const std::string &rss_xml) {
-    XML_DataHandler contentHandler;
+    XML_DataHandler contentHandler(_cb);
     Poco::XML::SAXParser parser {};
     parser.setFeature(Poco::XML::XMLReader::FEATURE_NAMESPACES, false);
     parser.setFeature(Poco::XML::XMLReader::FEATURE_NAMESPACE_PREFIXES, true);
 
-    contentHandler.set_callback(_cb);
     parser.setContentHandler(&contentHandler);
 
     parser.parseString(rss_xml);

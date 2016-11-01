@@ -21,7 +21,7 @@ class Parser {
          *
          * @param cb Callback of type @ref parser_cb.
          */
-        Parser(parser_cb &cb) noexcept(true);
+        explicit Parser(parser_cb &cb) noexcept(true);
         /**
          * Performs parsing of RSS feed.
          *
