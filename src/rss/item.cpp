@@ -10,7 +10,8 @@ Item::Item(const std::string &title,
            const std::string &link,
            const std::string &guid,
            const std::string &desc) noexcept(true)
-:
+
+    :
     _title(title),
     _category(category),
     _link(link),

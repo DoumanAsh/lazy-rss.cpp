@@ -4,6 +4,7 @@
 #include "item.hpp"
 
 using namespace item;
+using namespace parser;
 
 #define POCO_WIN32_UTF8
 #include "Poco/SAX/Attributes.h"
@@ -61,8 +62,8 @@ public:
                  qname == "content") cur_item.set_desc(cur_content);
         else if (qname == "item") {
             //Finished with element parsing.
-            std::cout << static_cast<std::string>(cur_item) << std::endl;
             is_item = false;
+            callback(cur_item);
         }
 
         cur_content.clear();
@@ -93,15 +94,22 @@ public:
         (void)name;
     }
 
+    void set_callback(const parser_cb &cb) {
+        callback = cb;
+    }
+
 private:
     bool is_item;
     std::string cur_content;
     Item cur_item;
+    parser_cb callback;
 };
 
-using namespace parser;
+Parser::Parser(parser_cb &cb) noexcept(true)
+    :
+    _cb(cb)
+{
 
-Parser::Parser() {
 }
 
 void Parser::parse(const std::string &rss_xml) {
@@ -109,6 +117,8 @@ void Parser::parse(const std::string &rss_xml) {
     Poco::XML::SAXParser parser {};
     parser.setFeature(Poco::XML::XMLReader::FEATURE_NAMESPACES, false);
     parser.setFeature(Poco::XML::XMLReader::FEATURE_NAMESPACE_PREFIXES, true);
+
+    contentHandler.set_callback(_cb);
     parser.setContentHandler(&contentHandler);
 
     parser.parseString(rss_xml);
