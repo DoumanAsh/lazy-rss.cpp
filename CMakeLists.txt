@@ -7,15 +7,18 @@ set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Os -Wall -Wextra -g")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Os")
 
+file(GLOB lazy_rss_SRC "src/rss/*.cpp")
+add_library(lazy_rss STATIC "${lazy_rss_SRC}")
+
 file(GLOB utils_SRC "src/utils/*.cpp")
 add_library(lazy_utils STATIC "${utils_SRC}")
 
 file(GLOB rss_SRC "src/*.cpp")
-add_executable(lazy_rss "${rss_SRC}")
-target_link_libraries(lazy_rss lazy_utils)
+add_executable(get_rss "${rss_SRC}")
+target_link_libraries(get_rss lazy_utils lazy_rss)
 
 #Set up Poco lib
-target_link_libraries(lazy_rss PocoFoundation PocoNet PocoNetSSL)
+target_link_libraries(get_rss PocoFoundation PocoNet PocoNetSSL PocoXML)
 
 ###########################
 # Unit tests
@@ -39,9 +42,9 @@ if (test)
     file(GLOB ut_SRC "test/*.cpp")
     add_executable(ut "${ut_SRC}")
 
-    include_directories(src src/utils)
-    target_link_libraries(ut lazy_utils)
-    target_link_libraries(ut PocoFoundation PocoNet PocoNetSSL)
+    include_directories(src src/utils src/rss)
+    target_link_libraries(ut lazy_utils lazy_rss)
+    target_link_libraries(ut PocoFoundation PocoNet PocoNetSSL PocoXML)
 
     # Add Google Test dependency.
     # Its repo contains sub-projects:
@@ -69,5 +72,5 @@ add_custom_target(
     COMMAND cppcheck
     --enable=all
     -I ${project_includes}
-    ${utils_SRC} ${rss_SRC}
+    ${utils_SRC} ${rss_SRC} ${lazy_rss_SRC}
 )

@@ -71,7 +71,7 @@ class HTTPS_Request {
          *
          * @param url Valid HTTPS URI string.
          */
-        HTTPS_Request(const char* url);
+        explicit HTTPS_Request(const char* url);
 
         /**
          * Default destructor to terminate SSL facilities.

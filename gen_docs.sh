@@ -10,6 +10,8 @@ cd -
 
 doxygen Doxygen.config
 
+SHA=`git log -1 --format="%s(%h %cd)" --date=short`
+
 cd html/
 
 if [[ -z `git status --porcelain` ]]; then
@@ -17,7 +19,6 @@ if [[ -z `git status --porcelain` ]]; then
     exit 0
 fi
 
-SHA=`git log -1 --format="%s(%h %cd)" --date=short`
 
 git add .
 git commit -m "Auto-update" -m "Commit: ${SHA}"

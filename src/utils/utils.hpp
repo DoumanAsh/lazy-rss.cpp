@@ -9,5 +9,5 @@
  * * @ref http;
  */
 namespace utils {
-    using namespace http;
+    namespace http = http;
 }
