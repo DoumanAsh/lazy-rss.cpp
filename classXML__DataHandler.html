@@ -104,8 +104,8 @@ Inheritance diagram for XML_DataHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acecb4cb5cf8bdd29ca99de572279c6fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#acecb4cb5cf8bdd29ca99de572279c6fe">XML_DataHandler</a> ()</td></tr>
-<tr class="separator:acecb4cb5cf8bdd29ca99de572279c6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89f24c411e2baf4ead45ddf640b9870"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#ac89f24c411e2baf4ead45ddf640b9870">XML_DataHandler</a> (const <a class="el" href="namespaceparser.html#adee523cf05836b1e04a7ae3cb64d14ed">parser_cb</a> &amp;callback)</td></tr>
+<tr class="separator:ac89f24c411e2baf4ead45ddf640b9870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ecf0425f77ece2c68566b0ab1b10f77"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#a7ecf0425f77ece2c68566b0ab1b10f77">~XML_DataHandler</a> ()</td></tr>
 <tr class="separator:a7ecf0425f77ece2c68566b0ab1b10f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b97dd00b7e6cfa70e71adebe73e4505"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#a0b97dd00b7e6cfa70e71adebe73e4505">setDocumentLocator</a> (const Poco::XML::Locator *loc)</td></tr>
@@ -130,14 +130,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5f07b7eca3a8e83491be92ea45321dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb2ddfd05ae20cdce2520ad40d562473"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#adb2ddfd05ae20cdce2520ad40d562473">skippedEntity</a> (const Poco::XML::XMLString &amp;name)</td></tr>
 <tr class="separator:adb2ddfd05ae20cdce2520ad40d562473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92b74a79000100111abb9c61da6c82c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classXML__DataHandler.html#a92b74a79000100111abb9c61da6c82c8">set_callback</a> (const <a class="el" href="namespaceparser.html#adee523cf05836b1e04a7ae3cb64d14ed">parser_cb</a> &amp;cb)</td></tr>
-<tr class="separator:a92b74a79000100111abb9c61da6c82c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ContentHandler of RSS parser. </p>
 <p>See POCO <a href="https://pocoproject.org/docs/Poco.XML.ContentHandler.html">documentation</a> for description. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="acecb4cb5cf8bdd29ca99de572279c6fe"></a>
+<a class="anchor" id="ac89f24c411e2baf4ead45ddf640b9870"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -147,13 +145,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">XML_DataHandler::XML_DataHandler </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="namespaceparser.html#adee523cf05836b1e04a7ae3cb64d14ed">parser_cb</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -374,30 +373,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a92b74a79000100111abb9c61da6c82c8"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void XML_DataHandler::set_callback </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceparser.html#adee523cf05836b1e04a7ae3cb64d14ed">parser_cb</a> &amp;&#160;</td>
-          <td class="paramname"><em>cb</em></td><td>)</td>
-          <td></td>
         </tr>
       </table>
   </td>
