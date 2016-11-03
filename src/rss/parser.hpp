@@ -9,10 +9,15 @@
  * RSS Parser module.
  */
 namespace parser {
-/// Parser callback type
+/**
+ * Parser callback type
+ */
 typedef std::function<void(const item::Item&)> parser_cb;
 /**
  * RSS Parser class.
+ *
+ * It parses RSS feed content and invokes callback
+ * with each new RSS item extracted.
  */
 class Parser {
     public:
