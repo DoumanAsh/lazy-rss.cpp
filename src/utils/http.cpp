@@ -37,18 +37,41 @@ HTTP_Response::operator std::string() const {
     return stream.str();
 }
 
-HTTPS_Request::HTTPS_Request(const char* url) {
+HTTP_Request::HTTP_Request(const char* url) {
     this->uri = Poco::URI(url);
+}
+
+HTTP_Request& HTTP_Request::set_method(const std::string &method) {
+    this->method = method;
+    return *this;
+}
+
+HTTP_Response HTTP_Request::run() {
+    //TODO: consider to avoid exceptions.
+    Poco::Net::HTTPClientSession session(this->uri.getHost(), this->uri.getPort());
+    Poco::Net::HTTPRequest request(this->method, this->uri.getPathAndQuery());
+    Poco::Net::HTTPResponse response;
+
+    session.sendRequest(request);
+    std::istream& rs = session.receiveResponse(response);
+
+    std::string response_body;
+    Poco::StreamCopier::copyToString(rs, response_body);
+
+    return HTTP_Response(response.getStatus(), response.getReason(), response_body);
+}
+
+HTTPS_Request& HTTPS_Request::set_method(const std::string &method) {
+    HTTP_Request::set_method(method);
+    return *this;
+}
+
+HTTPS_Request::HTTPS_Request(const char* url) : HTTP_Request(url) {
     Poco::Net::initializeSSL();
 }
 
 HTTPS_Request::~HTTPS_Request() {
     Poco::Net::uninitializeSSL();
-}
-
-HTTPS_Request& HTTPS_Request::set_method(const std::string &method) {
-    this->method = method;
-    return *this;
 }
 
 HTTPS_Request& HTTPS_Request::set_strict_ssl() {

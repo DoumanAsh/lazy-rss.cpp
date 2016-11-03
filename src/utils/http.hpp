@@ -75,13 +75,39 @@ class HTTP_Response {
         std::string _body;
 };
 
-/**
- * HTTPS request.
- */
-class HTTPS_Request {
+class HTTP_Request {
     public:
         /**
          * Initializes request class.
+         *
+         * @param url Valid HTTP URI string.
+         */
+        explicit HTTP_Request(const char* url);
+
+        /**
+         * Sets method type.
+         *
+         * @param method Poco method type.
+         */
+        HTTP_Request& set_method(const std::string &method);
+
+        /**
+         * @return Response to HTTP request.
+         */
+        HTTP_Response run();
+
+    protected:
+        Poco::URI uri;
+        std::string method;
+};
+
+/**
+ * HTTPS request.
+ */
+class HTTPS_Request: public HTTP_Request {
+    public:
+        /**
+         * Initializes request class alongside with SSL facilities.
          *
          * @param url Valid HTTPS URI string.
          */
@@ -98,7 +124,6 @@ class HTTPS_Request {
          * @param method Poco method type.
          */
         HTTPS_Request& set_method(const std::string &method);
-
         /**
          * Sets strict SSL verification mode.
          *
@@ -117,9 +142,5 @@ class HTTPS_Request {
          * @return Response to HTTP request.
          */
         HTTP_Response run();
-
-    private:
-        Poco::URI uri;
-        std::string method;
 };
 }
