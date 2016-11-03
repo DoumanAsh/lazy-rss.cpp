@@ -37,19 +37,34 @@ HTTP_Response::operator std::string() const {
     return stream.str();
 }
 
-HTTP_Request::HTTP_Request(const char* url) {
+HTTP_Request::HTTP_Request(const char* url): method(METHOD::GET) {
     this->uri = Poco::URI(url);
 }
 
-HTTP_Request& HTTP_Request::set_method(const std::string &method) {
+HTTP_Request& HTTP_Request::set_method(METHOD method) {
     this->method = method;
     return *this;
+}
+
+const std::string& HTTP_Request::method_str() const {
+    switch (this->method) {
+        case METHOD::GET: return Poco::Net::HTTPRequest::HTTP_GET;
+        case METHOD::HEAD: return Poco::Net::HTTPRequest::HTTP_HEAD;
+        case METHOD::PUT: return Poco::Net::HTTPRequest::HTTP_PUT;
+        case METHOD::POST: return Poco::Net::HTTPRequest::HTTP_POST;
+        case METHOD::OPT: return Poco::Net::HTTPRequest::HTTP_OPTIONS;
+        case METHOD::DEL: return Poco::Net::HTTPRequest::HTTP_DELETE;
+        case METHOD::TRACE: return Poco::Net::HTTPRequest::HTTP_TRACE;
+        case METHOD::CONNECT: return Poco::Net::HTTPRequest::HTTP_CONNECT;
+    }
+
+    throw "Unknown HTTP method";
 }
 
 HTTP_Response HTTP_Request::run() {
     //TODO: consider to avoid exceptions.
     Poco::Net::HTTPClientSession session(this->uri.getHost(), this->uri.getPort());
-    Poco::Net::HTTPRequest request(this->method, this->uri.getPathAndQuery());
+    Poco::Net::HTTPRequest request(this->method_str(), this->uri.getPathAndQuery());
     Poco::Net::HTTPResponse response;
 
     session.sendRequest(request);
@@ -61,7 +76,7 @@ HTTP_Response HTTP_Request::run() {
     return HTTP_Response(response.getStatus(), response.getReason(), response_body);
 }
 
-HTTPS_Request& HTTPS_Request::set_method(const std::string &method) {
+HTTPS_Request& HTTPS_Request::set_method(METHOD method) {
     HTTP_Request::set_method(method);
     return *this;
 }
@@ -94,7 +109,7 @@ HTTPS_Request& HTTPS_Request::set_relaxed_ssl() {
 HTTP_Response HTTPS_Request::run() {
     //TODO: consider to avoid exceptions.
     Poco::Net::HTTPSClientSession session(this->uri.getHost(), this->uri.getPort());
-    Poco::Net::HTTPRequest request(this->method, this->uri.getPathAndQuery());
+    Poco::Net::HTTPRequest request(this->method_str(), this->uri.getPathAndQuery());
     Poco::Net::HTTPResponse response;
 
     session.sendRequest(request);

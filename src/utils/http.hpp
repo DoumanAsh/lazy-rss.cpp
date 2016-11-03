@@ -20,6 +20,23 @@
  * HTTP facilities.
  */
 namespace http {
+
+/**
+ * HTTP Method enum.
+ *
+ * See [definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
+ */
+enum class METHOD {
+    GET,    /**< HTTP GET Method*/
+    HEAD,   /**< HTTP HEAD Method*/
+    PUT,    /**< HTTP PUT Method*/
+    POST,   /**< HTTP POST Method*/
+    OPT,    /**< HTTP OPTIONS Method*/
+    DEL,    /**< HTTP DELETE Method*/
+    TRACE,  /**< HTTP TRACE Method*/
+    CONNECT,/**< HTTP CONNECT Method*/
+};
+
 /**
  * Represents HTTP(s) response.
  */
@@ -80,6 +97,8 @@ class HTTP_Request {
         /**
          * Initializes request class.
          *
+         * Default method is GET.
+         *
          * @param url Valid HTTP URI string.
          */
         explicit HTTP_Request(const char* url);
@@ -87,9 +106,9 @@ class HTTP_Request {
         /**
          * Sets method type.
          *
-         * @param method Poco method type.
+         * @param method HTTP Method type.
          */
-        HTTP_Request& set_method(const std::string &method);
+        HTTP_Request& set_method(METHOD method);
 
         /**
          * @return Response to HTTP request.
@@ -98,7 +117,12 @@ class HTTP_Request {
 
     protected:
         Poco::URI uri;
-        std::string method;
+        METHOD method;
+
+        /**
+         * @return Poco method string.
+         */
+        const std::string& method_str() const;
 };
 
 /**
@@ -108,6 +132,8 @@ class HTTPS_Request: public HTTP_Request {
     public:
         /**
          * Initializes request class alongside with SSL facilities.
+         *
+         * Default method is GET.
          *
          * @param url Valid HTTPS URI string.
          */
@@ -121,9 +147,10 @@ class HTTPS_Request: public HTTP_Request {
         /**
          * Sets method type.
          *
-         * @param method Poco method type.
+         * @param method HTTP Method type.
          */
-        HTTPS_Request& set_method(const std::string &method);
+        HTTPS_Request& set_method(METHOD method);
+
         /**
          * Sets strict SSL verification mode.
          *

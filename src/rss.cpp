@@ -4,7 +4,7 @@
 using namespace utils::http;
 
 static int parse(const char *rss_feed_url) {
-    auto result = http::HTTPS_Request(rss_feed_url).set_method(Poco::Net::HTTPRequest::HTTP_GET)
+    auto result = http::HTTPS_Request(rss_feed_url).set_method(http::METHOD::GET)
                                                    .set_relaxed_ssl()
                                                    .run();
 
