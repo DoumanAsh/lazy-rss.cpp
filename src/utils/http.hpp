@@ -162,6 +162,8 @@ class HTTPS_Request: public HTTP_Request {
          * Sets relaxed SSL verification mode.
          *
          * Failed certificate is accepted.
+         *
+         * Default behaviour.
          */
         HTTPS_Request& set_relaxed_ssl();
 
@@ -169,5 +171,8 @@ class HTTPS_Request: public HTTP_Request {
          * @return Response to HTTP request.
          */
         HTTP_Response run();
+
+    protected:
+        bool is_ssl_init;
 };
 }

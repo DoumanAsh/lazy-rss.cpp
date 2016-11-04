@@ -81,7 +81,7 @@ HTTPS_Request& HTTPS_Request::set_method(METHOD method) {
     return *this;
 }
 
-HTTPS_Request::HTTPS_Request(const char* url) : HTTP_Request(url) {
+HTTPS_Request::HTTPS_Request(const char* url) : HTTP_Request(url), is_ssl_init(false) {
     Poco::Net::initializeSSL();
 }
 
@@ -90,6 +90,7 @@ HTTPS_Request::~HTTPS_Request() {
 }
 
 HTTPS_Request& HTTPS_Request::set_strict_ssl() {
+    is_ssl_init = true;
     auto cert = new Poco::Net::RejectCertificateHandler(true);
     auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "");
     Poco::Net::SSLManager::instance().initializeClient(0, cert, context);
@@ -97,6 +98,7 @@ HTTPS_Request& HTTPS_Request::set_strict_ssl() {
 }
 
 HTTPS_Request& HTTPS_Request::set_relaxed_ssl() {
+    is_ssl_init = true;
     auto cert = new Poco::Net::AcceptCertificateHandler(true);
     auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
                                           "", "", "",
@@ -107,6 +109,8 @@ HTTPS_Request& HTTPS_Request::set_relaxed_ssl() {
 }
 
 HTTP_Response HTTPS_Request::run() {
+    if (!is_ssl_init) this->set_relaxed_ssl();
+
     //TODO: consider to avoid exceptions.
     Poco::Net::HTTPSClientSession session(this->uri.getHost(), this->uri.getPort());
     Poco::Net::HTTPRequest request(this->method_str(), this->uri.getPathAndQuery());
