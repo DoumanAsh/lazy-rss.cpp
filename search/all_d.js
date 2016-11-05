@@ -11,6 +11,7 @@ var searchData=
   ['set_5ftitle',['set_title',['../classitem_1_1Item.html#afae54b0dd526112e0b8722c2beaec6fe',1,'item::Item']]],
   ['setdocumentlocator',['setDocumentLocator',['../classXML__DataHandler.html#a0b97dd00b7e6cfa70e71adebe73e4505',1,'XML_DataHandler']]],
   ['skippedentity',['skippedEntity',['../classXML__DataHandler.html#adb2ddfd05ae20cdce2520ad40d562473',1,'XML_DataHandler']]],
+  ['ssl_5finit',['ssl_init',['../classhttp_1_1HTTPS__Request.html#aa9f0b3c07307e9baae078ff1a8ea44ca',1,'http::HTTPS_Request']]],
   ['startdocument',['startDocument',['../classXML__DataHandler.html#a076ea07060303d634f091277419bf64c',1,'XML_DataHandler']]],
   ['startelement',['startElement',['../classXML__DataHandler.html#a21a4a123474b417c249e440d917fa628',1,'XML_DataHandler']]],
   ['startprefixmapping',['startPrefixMapping',['../classXML__DataHandler.html#a725d0acc99d65d86cd3f6ed20da3bae7',1,'XML_DataHandler']]],

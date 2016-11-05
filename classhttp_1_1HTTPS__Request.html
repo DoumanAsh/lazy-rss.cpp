@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classhttp_1_1HTTPS__Request-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">http::HTTPS_Request Class Reference</div>  </div>
@@ -138,16 +139,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9357ebf998a99b83c9308305ea4dfaf9 inherit pub_methods_classhttp_1_1HTTP__Request"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1HTTP__Response.html">HTTP_Response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Request.html#a9357ebf998a99b83c9308305ea4dfaf9">run</a> ()</td></tr>
 <tr class="separator:a9357ebf998a99b83c9308305ea4dfaf9 inherit pub_methods_classhttp_1_1HTTP__Request"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_classhttp_1_1HTTP__Request"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classhttp_1_1HTTP__Request')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classhttp_1_1HTTP__Request.html">http::HTTP_Request</a></td></tr>
-<tr class="memitem:ad2175bf73470d421b59f3d9149fde109 inherit pro_methods_classhttp_1_1HTTP__Request"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Request.html#ad2175bf73470d421b59f3d9149fde109">method_str</a> () const </td></tr>
-<tr class="separator:ad2175bf73470d421b59f3d9149fde109 inherit pro_methods_classhttp_1_1HTTP__Request"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aa9f0b3c07307e9baae078ff1a8ea44ca"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTPS__Request.html#aa9f0b3c07307e9baae078ff1a8ea44ca">ssl_init</a></td></tr>
+<tr class="separator:aa9f0b3c07307e9baae078ff1a8ea44ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classhttp_1_1HTTP__Request"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classhttp_1_1HTTP__Request')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classhttp_1_1HTTP__Request.html">http::HTTP_Request</a></td></tr>
 <tr class="memitem:a24e060e3ecb35638962e2479ba7a9c4c inherit pro_attribs_classhttp_1_1HTTP__Request"><td class="memItemLeft" align="right" valign="top">Poco::URI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Request.html#a24e060e3ecb35638962e2479ba7a9c4c">uri</a></td></tr>
 <tr class="separator:a24e060e3ecb35638962e2479ba7a9c4c inherit pro_attribs_classhttp_1_1HTTP__Request"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4289f912d45c39d180d45d987781fc45 inherit pro_attribs_classhttp_1_1HTTP__Request"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#aca5079e37fe0a74f595a24097ef382a0">METHOD</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Request.html#a4289f912d45c39d180d45d987781fc45">method</a></td></tr>
 <tr class="separator:a4289f912d45c39d180d45d987781fc45 inherit pro_attribs_classhttp_1_1HTTP__Request"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classhttp_1_1HTTP__Request"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classhttp_1_1HTTP__Request')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classhttp_1_1HTTP__Request.html">http::HTTP_Request</a></td></tr>
+<tr class="memitem:ad2175bf73470d421b59f3d9149fde109 inherit pro_methods_classhttp_1_1HTTP__Request"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1HTTP__Request.html#ad2175bf73470d421b59f3d9149fde109">method_str</a> () const </td></tr>
+<tr class="separator:ad2175bf73470d421b59f3d9149fde109 inherit pro_methods_classhttp_1_1HTTP__Request"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>HTTPS request. </p>
@@ -257,7 +263,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets relaxed SSL verification mode. </p>
-<p>Failed certificate is accepted. </p>
+<p>Failed certificate is accepted.</p>
+<p>Default behaviour. </p>
 
 </div>
 </div>
@@ -276,6 +283,27 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Sets strict SSL verification mode. </p>
 <p>Failed certificate is being rejected. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa9f0b3c07307e9baae078ff1a8ea44ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void()&gt; http::HTTPS_Request::ssl_init</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
