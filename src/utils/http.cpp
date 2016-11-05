@@ -37,6 +37,9 @@ HTTP_Response::operator std::string() const {
     return stream.str();
 }
 
+/*
+ * HTTP Request.
+ */
 HTTP_Request::HTTP_Request(const char* url): method(METHOD::GET) {
     this->uri = Poco::URI(url);
 }
@@ -62,7 +65,6 @@ const std::string& HTTP_Request::method_str() const {
 }
 
 HTTP_Response HTTP_Request::run() {
-    //TODO: consider to avoid exceptions.
     Poco::Net::HTTPClientSession session(this->uri.getHost(), this->uri.getPort());
     Poco::Net::HTTPRequest request(this->method_str(), this->uri.getPathAndQuery());
     Poco::Net::HTTPResponse response;
@@ -76,13 +78,32 @@ HTTP_Response HTTP_Request::run() {
     return HTTP_Response(response.getStatus(), response.getReason(), response_body);
 }
 
+/*
+ * HTTPS Request.
+ */
+
+static void init_strict_ssl() {
+    auto cert = new Poco::Net::RejectCertificateHandler(true);
+    auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "");
+    Poco::Net::SSLManager::instance().initializeClient(0, cert, context);
+}
+
+static void init_relaxed_ssl() {
+    auto cert = new Poco::Net::AcceptCertificateHandler(true);
+    auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
+                                          "", "", "",
+                                          Poco::Net::Context::VERIFY_NONE,
+                                          9, false, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+    Poco::Net::SSLManager::instance().initializeClient(0, cert, context);
+}
+
+HTTPS_Request::HTTPS_Request(const char* url) : HTTP_Request(url) {
+    Poco::Net::initializeSSL();
+}
+
 HTTPS_Request& HTTPS_Request::set_method(METHOD method) {
     HTTP_Request::set_method(method);
     return *this;
-}
-
-HTTPS_Request::HTTPS_Request(const char* url) : HTTP_Request(url), is_ssl_init(false) {
-    Poco::Net::initializeSSL();
 }
 
 HTTPS_Request::~HTTPS_Request() {
@@ -90,28 +111,20 @@ HTTPS_Request::~HTTPS_Request() {
 }
 
 HTTPS_Request& HTTPS_Request::set_strict_ssl() {
-    is_ssl_init = true;
-    auto cert = new Poco::Net::RejectCertificateHandler(true);
-    auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "");
-    Poco::Net::SSLManager::instance().initializeClient(0, cert, context);
+    this->ssl_init = init_strict_ssl;
     return *this;
 }
 
 HTTPS_Request& HTTPS_Request::set_relaxed_ssl() {
-    is_ssl_init = true;
-    auto cert = new Poco::Net::AcceptCertificateHandler(true);
-    auto context = new Poco::Net::Context(Poco::Net::Context::CLIENT_USE,
-                                          "", "", "",
-                                          Poco::Net::Context::VERIFY_NONE,
-                                          9, false, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
-    Poco::Net::SSLManager::instance().initializeClient(0, cert, context);
+    this->ssl_init = init_relaxed_ssl;
     return *this;
 }
 
 HTTP_Response HTTPS_Request::run() {
-    if (!is_ssl_init) this->set_relaxed_ssl();
+    if (!this->ssl_init) this->set_relaxed_ssl();
 
-    //TODO: consider to avoid exceptions.
+    this->ssl_init();
+
     Poco::Net::HTTPSClientSession session(this->uri.getHost(), this->uri.getPort());
     Poco::Net::HTTPRequest request(this->method_str(), this->uri.getPathAndQuery());
     Poco::Net::HTTPResponse response;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <iostream>
 
 #define POCO_WIN32_UTF8
@@ -173,6 +174,6 @@ class HTTPS_Request: public HTTP_Request {
         HTTP_Response run();
 
     protected:
-        bool is_ssl_init;
+        std::function<void()> ssl_init;
 };
 }
