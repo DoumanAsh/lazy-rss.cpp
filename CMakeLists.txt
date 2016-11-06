@@ -14,17 +14,23 @@ file(GLOB utils_SRC "src/utils/*.cpp")
 add_library(lazy_utils STATIC "${utils_SRC}")
 
 file(GLOB rss_SRC "src/*.cpp")
-add_executable(get_rss "${rss_SRC}")
-target_link_libraries(get_rss lazy_utils lazy_rss)
 
-#Set up Poco lib
-target_link_libraries(get_rss PocoFoundation PocoNet PocoNetSSL PocoXML)
+###########################
+# Executable (on by default)
+##########################
+option(EXEC "Build exectuable" ON)
+if (EXEC)
+    add_executable(get_rss "${rss_SRC}")
+    target_link_libraries(get_rss lazy_utils lazy_rss)
+    #Set up Poco lib
+    target_link_libraries(get_rss PocoFoundation PocoNet PocoNetSSL PocoXML)
+endif()
 
 ###########################
 # Unit tests
 ##########################
-option(test "Build tests" OFF)
-if (test)
+option(UT "Build tests" OFF)
+if (UT)
     set(G_TEST_DIR ${CMAKE_BINARY_DIR}/lib/googletest)
 
     # Use current master of googletest as 1.8 has bug that prevents compilation with msys2 gcc
