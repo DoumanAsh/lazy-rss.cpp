@@ -3,7 +3,7 @@ project(lazy_rss CXX)
 cmake_minimum_required(VERSION 3.0)
 
 find_package(Poco REQUIRED Foundation Net NetSsl)
-set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Os -Wall -Wextra -g")
+set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Os -Wall -Wextra -pedantic -g")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Os")
 
