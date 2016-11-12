@@ -1,9 +1,10 @@
 #include "utils/utils.hpp"
 #include "rss/rss.hpp"
+#include "cli/cli.hpp"
 
 using namespace utils::http;
 
-static int parse(const char *rss_feed_url) {
+inline static void parse(const char *rss_feed_url) {
     auto result = http::HTTPS_Request(rss_feed_url).set_method(http::METHOD::GET)
                                                    .set_relaxed_ssl()
                                                    .run();
@@ -13,18 +14,32 @@ static int parse(const char *rss_feed_url) {
     };
 
     rss::parser::Parser(parser_callback).parse(result.body());
-
-    return 0;
 }
 
-int main(int argc, char *argv[]) {
-    (void)argc;
-    (void)argv;
+inline static int parse_urls(const std::vector<std::string> &urls) {
     try {
-       return parse("https://www.nyaa.se/?page=rss");
+        for (auto &url : urls) {
+            parse(url.c_str());
+        }
     }
     catch (Poco::Exception &exc) {
         std::cerr << exc.displayText() << std::endl;
         return 1;
     }
+
+    return 0;
+}
+
+int main(int argc, char *argv[]) {
+    try {
+        cli::Options cli_opts(argc, argv);
+
+        return parse_urls(cli_opts.urls());
+    }
+    catch (cli::ParseError &exc) {
+        std::cerr << exc.what();
+        std::cout << cli::Options::usage << std::endl;
+        return exc.result();
+    }
+
 }

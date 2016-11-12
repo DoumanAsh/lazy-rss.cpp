@@ -13,15 +13,17 @@ add_library(lazy_rss STATIC "${lazy_rss_SRC}")
 file(GLOB utils_SRC "src/utils/*.cpp")
 add_library(lazy_utils STATIC "${utils_SRC}")
 
-file(GLOB rss_SRC "src/*.cpp")
+file(GLOB cli_SRC "src/cli/*.cpp")
+add_library(lazy_cli STATIC "${cli_SRC}")
 
 ###########################
 # Executable (on by default)
 ##########################
 option(EXEC "Build exectuable" ON)
 if (EXEC)
+    file(GLOB rss_SRC "src/*.cpp")
     add_executable(get_rss "${rss_SRC}")
-    target_link_libraries(get_rss lazy_utils lazy_rss)
+    target_link_libraries(get_rss lazy_utils lazy_rss lazy_cli)
     #Set up Poco lib
     target_link_libraries(get_rss PocoFoundation PocoNet PocoNetSSL PocoXML)
 endif()
@@ -49,7 +51,7 @@ if (UT)
     add_executable(ut "${ut_SRC}")
 
     include_directories(src src/utils src/rss)
-    target_link_libraries(ut lazy_utils lazy_rss)
+    target_link_libraries(ut lazy_utils lazy_rss lazy_cli)
     target_link_libraries(ut PocoFoundation PocoNet PocoNetSSL PocoXML)
 
     # Add Google Test dependency.
