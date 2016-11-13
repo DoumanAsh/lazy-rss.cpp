@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rss',['rss',['../namespacerss.html',1,'']]]
+  ['parser',['parser',['../namespaceparser.html',1,'']]]
 ];

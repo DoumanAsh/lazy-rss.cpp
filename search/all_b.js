@@ -1,6 +1,8 @@
 var searchData=
 [
   ['parse',['parse',['../classparser_1_1Parser.html#a5411979c6b55e2600446c9c59e41814f',1,'parser::Parser']]],
+  ['parseerror',['ParseError',['../classcli_1_1ParseError.html',1,'cli']]],
+  ['parseerror',['ParseError',['../classcli_1_1ParseError.html#aba23746ac902d698e00bb5c87bbdf721',1,'cli::ParseError::ParseError()'],['../classcli_1_1ParseError.html#a5b35275ea8204bdb8b73a51d5aff92c4',1,'cli::ParseError::ParseError(int result)'],['../classcli_1_1ParseError.html#abdc7e4c616255e521903d56a11151d48',1,'cli::ParseError::ParseError(int result, const char *desciption)']]],
   ['parser',['Parser',['../classparser_1_1Parser.html',1,'parser']]],
   ['parser',['parser',['../namespaceparser.html',1,'parser'],['../classparser_1_1Parser.html#ac9df78b991161521ac424b83d5949f19',1,'parser::Parser::Parser()']]],
   ['parser_2ecpp',['parser.cpp',['../parser_8cpp.html',1,'']]],

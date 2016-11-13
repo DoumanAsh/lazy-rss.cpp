@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utils',['utils',['../namespaceutils.html',1,'']]]
+  ['rss',['rss',['../namespacerss.html',1,'']]]
 ];

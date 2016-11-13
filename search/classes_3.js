@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['xml_5fdatahandler',['XML_DataHandler',['../classXML__DataHandler.html',1,'']]]
+  ['parseerror',['ParseError',['../classcli_1_1ParseError.html',1,'cli']]],
+  ['parser',['Parser',['../classparser_1_1Parser.html',1,'parser']]]
 ];
