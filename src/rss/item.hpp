@@ -86,7 +86,7 @@ class Item {
         /**
          * @return Negative of bool.
          */
-        operator !() const;
+        bool operator !() const;
 
     private:
         std::string _title;

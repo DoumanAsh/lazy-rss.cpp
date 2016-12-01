@@ -78,7 +78,7 @@ class HTTP_Response {
         /**
          * @return Whether response is failure or not.
          */
-        operator !() const;
+        bool operator !() const;
 
         /**
          * String representation of HTTP Response.

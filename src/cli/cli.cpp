@@ -15,7 +15,7 @@ const char* ParseError::what() const throw() {
     return _desc;
 }
 
-ParseError::result() const {
+int ParseError::result() const {
     return _result;
 }
 

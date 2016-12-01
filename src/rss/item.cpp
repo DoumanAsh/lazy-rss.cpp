@@ -85,6 +85,6 @@ Item::operator bool() const {
     return (!_title.empty()) and (!_link.empty()) and (!_desc.empty());
 }
 
-Item::operator !() const {
+bool Item::operator !() const {
     return (_title.empty()) or (_link.empty()) or (_desc.empty());
 }

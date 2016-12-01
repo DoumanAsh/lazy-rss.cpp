@@ -5,6 +5,11 @@ cmake_minimum_required(VERSION 3.0)
 find_package(Poco REQUIRED Foundation Net NetSsl)
 set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Os -Wall -Wextra -pedantic -g")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14")
+endif()
+
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Os")
 
 file(GLOB lazy_rss_SRC "src/rss/*.cpp")

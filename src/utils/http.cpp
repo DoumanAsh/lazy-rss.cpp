@@ -27,7 +27,7 @@ HTTP_Response::operator bool() const {
     return _status == 200 or _status == 201;
 }
 
-HTTP_Response::operator !() const {
+bool HTTP_Response::operator !() const {
     return _status != 200 and _status != 201;
 }
 
